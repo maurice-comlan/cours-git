@@ -1,0 +1,83 @@
+\begin{tikzpicture}[node distance=1cm,bend angle=-45,->,>=stealth',shorten >=1pt,auto, semithick]
+%\node (p0){};
+
+%  \node[state,right of=p0,label=below:$(1\ 0\ 1\ 1)$] (M0)                    {$M_0$};
+%  
+%   \node[state,right of=M0,node distance=3cm,label=below:$(1\ 1\ 1\ 1)$] (M1)                    {$M_1$};     
+%     
+% \path (M0) edge               node {$t_1$} (M1)
+%          (M1) edge    [bend left]           node [above]{$t_2$} (M0)
+%            edge  [bend right]             node {$t_3$} (M0)
+%	(M0) edge [loop above] node {$t_3$} (M0)
+%	(M1) edge [loop above] node {$t_1$} (M1);
+%
+%\node (figb) [below  left of=M1,node distance=2cm] {b) Graphe de couverture};
+
+
+\node [place,tokens=1] (b1) [label=left:$b_1(p_0)$]{};
+\node [place,tokens=1] (b2) [right of =b1,node distance=2.4cm,label=right:$b_2(p_2)$]{};
+
+ \node [transition] (e1) [below of=b1,label=left:$(t_1)$] {$e_1$};
+ \node [transition] (e2) [below of=b2,label=right:$(t_3)$] {$e_2$};
+ 
+ %\node [red place] (b4) [below left of =e1,node distance=1.4cm,label=left:$b_4(p_0)$]{};
+  \node [place] (b4) [below left of =e1,node distance=1.4cm,label=left:$b_4(p_0)$]{};
+ \node [place] (b5) [below right of =e1,node distance=1.4cm,label=left:$b_5(p_1)$]{};
+ %\node [red place] (b6) [below  of =e2,label=right:$b_6(p_2)$]{};
+  \node [place] (b6) [below  of =e2,label=right:$b_6(p_2)$]{};
+ 
+  \node [transition] (e3) [below of=b5,label=right:$(t_2)$] {$e_3$};
+\node [place,tokens=1] (b3) [left of =e3,label=left:$b_3(p_3)$]{};
+%\node [red place] (b7) [below  of =e3,label=right:$b_7(p_3)$]{};
+\node [place] (b7) [below  of =e3,label=right:$b_7(p_3)$]{};
+  
+  \draw (e1) edge [pre] (b1);
+  \draw (e1) edge [post,] (b5);
+  %\draw[red] (e1) edge [-to,dashed] (b4);
+  \draw (e1) edge [post] (b4);
+  \draw(b5) edge [-diamond,bend left] (e1);
+  
+  \draw (e2) edge [pre] (b2);
+  %\draw[red] (e2) edge [-to,dashed] (b6);
+  \draw (e2) edge [post] (b6);
+  \draw[-diamond] (b5)   --  (e2) ;
+  
+    \draw (e3) edge [pre] (b5); 
+    \draw (e3) edge [pre] (b3);
+    %\draw[red] (e3) edge [-to,dashed] (b7);
+    \draw (e3) edge [post] (b7);
+
+%\node (figa) [below  of=b7,node distance=1.0cm] {a. A finite prefix};
+
+%%%%%%%%%%%%%%%%%%%
+
+%\node [place,tokens=1] (b1p0) [right of =b2,node distance=5cm,label=left:$b_1(p_0)$]{};
+%\node [place,tokens=1] (b2p2) [right of =b1p0,node distance=2.4cm,label=right:$b_2(p_2)$]{};
+%
+% \node [transition] (te1) [below of=b1p0,label=left:$(t_1)$] {$e_1$};
+% \node [transition] (te2) [below of=b2p2,label=right:$(t_3)$] {$e_2$};
+% 
+% \node [red place] (b4p0) [above of =te1,label=right:$b_4(p_0)$]{};
+% \node [place] (b5p1) [below right of =te1,node distance=1.4cm,label=left:$b_5(p_1)$]{};
+% \node [red place] (b6p2) [above  of =te2,label=above:$b_6(p_2)$]{};
+% 
+%  \node [transition] (te3) [below of=b5p1,label=right:$(t_2)$] {$e_3$};
+%\node [place,tokens=1] (b3p3) [left of =te3,label=left:$b_3(p_3)$]{};
+%  \node [red place] (b7p3) [left  of =te3,label=below:$b_7(p_3)$]{};
+%  
+%  \draw (te1) edge [pre,bend left] (b1p0);
+%  \draw (te1) edge [post,] (b5p1);
+%  \draw[red] (te1) edge [-to,dashed,bend right] (b4p0);
+%    \draw(b5p1) edge [-diamond,bend left] (te1);
+%  
+%  \draw (te2) edge [pre,bend left] (b2p2);
+%  \draw[red] (te2) edge [-to,dashed,bend right] (b6p2);
+%  \draw[-diamond] (b5p1)   --  (te2) ;
+%  
+%    \draw (te3) edge [pre] (b5p1); 
+%    \draw (te3) edge [pre,bend left] (b3p3);
+%  \draw[red] (te3) edge [-to,dashed,bend right] (b7p3);
+%
+%\node (figb) [right of=figa,node distance=7.0cm] {b. A refolded prefix};
+
+\end{tikzpicture}

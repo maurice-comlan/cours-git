@@ -1,0 +1,39 @@
+\begin{tikzpicture}[node distance=1.2cm,bend angle=-45,->,>=stealth',shorten >=1pt,auto, semithick]
+\node (p0){};
+\node [place,tokens=1] (p1) [right of=p0,label=left:$p_1$] {};
+\node [transition] (t1) [below of=p1] {$t_1$};
+\node [place] (p3) [below of=t1,label=left:$p_3$]{};
+\node [transition] (t3) [below of=p3] {$t_3$};
+\node [place] (p4) [below of=t3,label=left:$p_4$]{};
+\node [transition] (t4) [below of=p4] {$t_4$};
+
+\node [place,tokens=1] (p2) [right of=p1,node distance=2cm,label=right:$p_2$] {};
+\node [transition] (t2) [below of=p2] {$t_2$};
+\node [place] (p5) [below of=t2,label=right:$p_5$]{};
+\node [transition] (t5) [below of=p5] {$t_5$};
+\node [place] (p6) [below of=t5,label=right:$p_6$]{};
+\node [place,tokens=1] (p7) [right of=p2,node distance=2cm,label=right:$p_7$] {};
+\node [transition] (t6) [below of=p7,label=left:$t_6$] {};
+
+
+\draw (t1) edge [pre] (p1);
+\draw (t1) edge [post] (p3);
+\draw (t3) edge [pre] (p3);
+\draw (t3) edge [post] (p4);
+\draw (t4) edge [pre] (p4);
+\draw (t4) edge [post,bend left] (p3);
+
+\draw (t2) edge [pre] (p2);
+\draw (t2) edge [post] (p5);
+\draw (t5) edge [pre] (p5);
+\draw (t5) edge [pre] (p3);
+\draw (t5) edge [post] (p6);
+
+\draw (t6) edge [pre,bend left] (p7);
+\draw (t6) edge [post,bend right] (p7);
+\draw (t6) edge [post] (p5);
+
+\draw(p3) edge [-diamond] (t2);
+\draw(p5) edge [-diamond] (t1);
+
+\end{tikzpicture}

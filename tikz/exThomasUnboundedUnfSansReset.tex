@@ -1,0 +1,200 @@
+\begin{tikzpicture}[node distance=1.2cm,bend angle=-40,->,>=stealth',shorten >=1pt,auto, semithick]
+\node (p0){};
+\node [place,tokens=1] (p1) [right of=p0,label=left:$b_1(p_1)$] {};
+\node [transition] (t1) [below of=p1,label=left:$(t_1)$] {$e_1$};
+\node [place] (p3) [below of=t1,label=left:$b_3(p_3)$]{};
+\node [transition] (t3) [below of=p3,label=left:$(t_3)$] {$e_3$};
+\node [place] (p4) [below of=t3,label=left:$b_5(p_4)$]{};
+\node [transition] (t4) [below of=p4,label=left:$(t_4)$] {$e_4$};
+\node [place] (p10) [below of=t4,label=left:$b_7(p_3)$]{};
+\node [transition] (t12) [below of=p10,label=left:$(t_3)$] {$e_{6}$};
+\node (p11) [below of=t12]{}; % .... vertical
+
+\node (p16) [below right of=t12,node distance=1.5cm]{};
+\node (p17) [right of=p16,node distance=1.5cm]{};
+\node (p18) [right of=p17,node distance=1.5cm]{};
+
+\node (p19) [below of=p6,node distance=3cm]{};
+\node (p20) [right of=p19,node distance=1.5cm]{};
+\node (p21) [right of=p20,node distance=1.5cm]{};
+
+\node [transition] (t2) [right of=p1,node distance=2cm,label=left:$(t_2)$] {$e_2$};
+\node [place,tokens=1] (p2) [above of=t2,label=right:$b_2(p_2)$] {};
+\node [place] (p5) [right of=p3,node distance=2cm,label=right:$b_4(p_5)$]{};
+\node [transition] (t5) [below of=p5,node distance=2cm,label=left:$(t_5)$] {$e_5$};
+\node (tmp) [right of=t5,node distance=1.5cm] {};
+\node [transition] (t5p) [below of=tmp,label=left:$(t_5)$] {$e_5'$};
+\node [place] (p6p) [below of=t5p,label=below:$b_6'(p_6)$]{};
+\node [place] (p6) [below of=t5,label=below:$b_6(p_6)$]{};
+
+\node [place,tokens=1] (p7) [right of=p2,node distance=3cm,label=right:$b_8(p_7)$] {};
+\node [transition] (t6) [below of=p7,label=left:$(t_6)$] {$e_7$};
+\node [place] (p8) [right of=p5,node distance=3cm,label=right:$b_{10}(p_5)$]{};
+\node [transition] (t7) [below of=p8,node distance=2cm,label=left:$(t_5)$] {$e_9$};
+\node (tmp) [right of=t7,node distance=1.5cm] {};
+\node [transition] (t7p) [below of=tmp,label=left:$(t_5)$] {$e_9'$};
+\node [place] (p9p) [below of=t7p,label=below:$b_{12}'(p_6)$]{};
+\node [place] (p9) [below of=t7,label=below:$b_{12}(p_6)$]{};
+
+\node [place] (p7b) [right of=p7,node distance=3cm,label=right:$b_9(p_7)$] {};
+\node [transition] (t6b) [below of=p7b,label=left:$(t_6)$] {$e_8$};
+\node [place] (p8b) [right of=p8,node distance=3cm,label=right:$b_{11}(p_5)$]{};
+\node [transition] (t7b) [below of=p8b,node distance=2cm,label=left:$(t_5)$] {$e_{10}$};
+\node (tmp) [right of=t7b,node distance=1.5cm] {};
+\node [transition] (t7bp) [below of=tmp,label=left:$(t_5)$] {$e_{10}'$};
+\node [place] (p9bp) [below of=t7bp,label=below:$b_{13}'(p_6)$]{};
+\node [place] (p9b) [below of=t7b,label=below:$b_{13}(p_6)$]{};
+
+\node [place] (p7c) [right of=p7b,node distance=3cm,label=right:$b_9(p_7)$] {};
+\node (t15) [below of=p7c,node distance=1.5cm]{};
+\draw (t15) edge [pre,dotted] (p7c);
+
+\draw (t1) edge [pre] (p1);
+\draw (t1) edge [post] (p3);
+\draw (t3) edge [pre] (p3);
+\draw (t3) edge [post] (p4);
+\draw (t4) edge [pre] (p4);
+\draw (t4) edge [post] (p10);
+\draw (t12) edge [pre] (p10);  % cond
+\draw (t12) edge [post,dotted] (p11);% .... horizontal
+
+
+\draw (t2) edge [pre] (p2);
+\draw (t2) edge [post] (p5);
+\draw (t5) edge [pre] (p5);
+\draw (t5p) edge [pre] (p5);
+\draw (t5) edge [post] (p6);
+\draw (t5p) edge [post] (p6p);
+
+\draw (t6) edge [pre] (p7);
+\draw (t6) edge [post] (p8);
+\draw (t6) edge [post] (p7b);
+\draw (t7) edge [pre] (p8);
+\draw (t7p) edge [pre] (p8);
+\draw (t7) edge [post] (p9);
+\draw (t7p) edge [post] (p9p);
+\draw (t6b) edge [pre] (p7b);
+\draw (t6b) edge [post] (p8b);
+\draw (t6b) edge [post] (p7c);
+\draw (t7b) edge [pre] (p8b);
+\draw (t7bp) edge [pre] (p8b);
+\draw (t7b) edge [post] (p9b); 
+\draw (t7bp) edge [post] (p9bp);
+
+% Arcs conditionnels pour arriver en P6
+\draw (t5) edge [pre,dashed] (p3);
+\draw (t7) edge [pre,dashed] (p3);
+\draw (t7b) edge [pre,dashed] (p3);
+\draw (t5p) edge [pre,bend right,dashed] (p10);
+\draw (t7p) edge [pre,bend right,dashed] (p10);
+\draw (t7bp) edge [pre,bend right,dashed] (p10);
+
+
+% Pointilles sur les arcs conditionnels    	
+\node (t16) [below right of=p9p,node distance=2.5cm]{};
+\node (p16) [right of=t16,node distance=2cm]{};	
+\draw (t16) edge [post,dotted] (p16);
+
+
+\end{tikzpicture}
+
+
+
+%% \begin{tikzpicture}[node distance=1.2cm,bend angle=-40,->,>=stealth',shorten >=1pt,auto, semithick]
+%% \node (p0){};
+%% \node [place,tokens=1] (p1) [right of=p0,label=left:$b_1(p_1)$] {};
+%% \node [transition] (t1) [below of=p1,label=left:$(t_1)$] {$e_1$};
+%% \node [place] (p3) [below of=t1,label=left:$b_3(p_3)$]{};
+%% \node [transition] (t3) [below of=p3,label=left:$(t_3)$] {$e_3$};
+%% \node [place] (p4) [below of=t3,label=left:$b_5(p_4)$]{};
+%% \node [transition] (t4) [below of=p4,label=left:$(t_4)$] {$e_4$};
+%% \node [place] (p10) [below of=t4,label=left:$b_7(p_3)$]{};
+%% \node [transition] (t12) [below of=p10,label=left:$(t_4)$] {$e_{6}$};
+%% \node (p11) [below of=t12]{}; % .... vertical
+
+%% \node (p16) [below right of=t12,node distance=1.5cm]{};
+%% \node (p17) [right of=p16,node distance=1.5cm]{};
+%% \node (p18) [right of=p17,node distance=1.5cm]{};
+
+%% \node (p19) [below of=p6,node distance=3cm]{};
+%% \node (p20) [right of=p19,node distance=1.5cm]{};
+%% \node (p21) [right of=p20,node distance=1.5cm]{};
+
+%% \node [place,tokens=1] (p2) [right of=p1,node distance=2cm,label=right:$b_2(p_2)$] {};
+%% \node [transition] (t2) [below of=p2,label=left:$(t_2)$] {$e_2$};
+%% \node [place] (p5) [below of=t2,label=right:$b_4(p_5)$]{};
+%% \node [transition] (t5) [below of=p5,node distance=2cm,label=left:$(t_5)$] {$e_5$};
+%% \node (tmp) [right of=t5,node distance=1.5cm] {};
+%% \node [transition] (t5p) [below of=tmp,label=left:$(t_5)$] {$e_5'$};
+%% \node [place] (p6p) [below of=t5p,label=below:$b_6'(p_6)$]{};
+%% \node [place] (p6) [below of=t5,label=below:$b_6(p_6)$]{};
+
+%% \node [place,tokens=1] (p7) [right of=p2,node distance=3cm,label=right:$b_8(p_7)$] {};
+%% \node [transition] (t6) [below of=p7,label=left:$(t_6)$] {$e_7$};
+%% \node [place] (p8) [below of=t6,label=right:$b_{10}(p_5)$]{};
+%% \node [transition] (t7) [below of=p8,node distance=2cm,label=left:$(t_5)$] {$e_9$};
+%% \node (tmp) [right of=t7,node distance=1.5cm] {};
+%% \node [transition] (t7p) [below of=tmp,label=left:$(t_5)$] {$e_9'$};
+%% \node [place] (p9p) [below of=t7p,label=below:$b_{12}'(p_6)$]{};
+%% \node [place] (p9) [below of=t7,label=below:$b_{12}(p_6)$]{};
+
+%% \node [place] (p7b) [right of=p7,node distance=3cm,label=right:$b_9(p_7)$] {};
+%% \node [transition] (t6b) [below of=p7b,label=left:$(t_6)$] {$e_8$};
+%% \node [place] (p8b) [below of=t6b,label=right:$b_{11}(p_5)$]{};
+%% \node [transition] (t7b) [below of=p8b,node distance=2cm,label=left:$(t_5)$] {$e_{10}$};
+%% \node (tmp) [right of=t7b,node distance=1.5cm] {};
+%% \node [transition] (t7bp) [below of=tmp,label=left:$(t_5)$] {$e_{10}'$};
+%% \node [place] (p9bp) [below of=t7bp,label=below:$b_{13}'(p_6)$]{};
+%% \node [place] (p9b) [below of=t7b,label=below:$b_{13}(p_6)$]{};
+
+%% \node [place] (p7c) [right of=p7b,node distance=3cm,label=right:$b_9(p_7)$] {};
+%% \node (t15) [below of=p7c,node distance=1.5cm]{};
+%% \draw (t15) edge [pre,dotted] (p7c);
+
+%% \draw (t1) edge [pre] (p1);
+%% \draw (t1) edge [post] (p3);
+%% \draw (t3) edge [pre] (p3);
+%% \draw (t3) edge [post] (p4);
+%% \draw (t4) edge [pre] (p4);
+%% \draw (t4) edge [post] (p10);
+%% \draw (t12) edge [pre] (p10);  % cond
+%% \draw (t12) edge [post,dotted] (p11);% .... horizontal
+
+
+%% \draw (t2) edge [pre] (p2);
+%% \draw (t2) edge [post] (p5);
+%% \draw (t5) edge [pre] (p5);
+%% \draw (t5p) edge [pre] (p5);
+%% \draw (t5) edge [post] (p6);
+%% \draw (t5p) edge [post] (p6p);
+
+%% \draw (t6) edge [pre] (p7);
+%% \draw (t6) edge [post] (p8);
+%% \draw (t6) edge [post] (p7b);
+%% \draw (t7) edge [pre] (p8);
+%% \draw (t7p) edge [pre] (p8);
+%% \draw (t7) edge [post] (p9);
+%% \draw (t7p) edge [post] (p9p);
+%% \draw (t6b) edge [pre] (p7b);
+%% \draw (t6b) edge [post] (p8b);
+%% \draw (t6b) edge [post] (p7c);
+%% \draw (t7b) edge [pre] (p8b);
+%% \draw (t7bp) edge [pre] (p8b);
+%% \draw (t7b) edge [post] (p9b); 
+%% \draw (t7bp) edge [post] (p9bp);
+
+%% % Arcs conditionnels pour arriver en P6
+%% \draw (t5) edge [pre,dashed] (p3);
+%% \draw (t7) edge [pre,dashed] (p3);
+%% \draw (t7b) edge [pre,dashed] (p3);
+%% \draw (t5p) edge [pre,bend right,dashed] (p10);
+%% \draw (t7p) edge [pre,bend right,dashed] (p10);
+%% \draw (t7bp) edge [pre,bend right,dashed] (p10);
+
+
+%% % Pointilles sur les arcs conditionnels    	
+%% \node (t16) [below right of=p9p,node distance=2.5cm]{};
+%% \node (p16) [right of=t16,node distance=2cm]{};	
+%% \draw (t16) edge [post,dotted] (p16);
+	
+%% \end{tikzpicture}

@@ -1,0 +1,152 @@
+\begin{figure}[h!]
+\begin{center}
+\resizebox{1\textwidth}{!}
+{
+%\begin{tikzpicture}[node distance=1cm,bend angle=-45,->,>=stealth',shorten >=1pt,auto, semithick]
+
+\begin{tikzpicture}[node distance=1.3cm,bend angle=-45,auto]
+%\tikzstyle{reset}=[-*]
+\node (p0){};
+    \node [transition] (t1) [right of=p0] {$t_1$};
+%     \node [place] (p2) [right of =t1,label=right:$P_2$]{};
+      \node [place] (p2) [right of =t1,label=right:$p_2$]{};
+     \node [place] (p1)  [below of=t1,label=left:$p_1$] {};
+    \node [transition] (t2) [below of=p1] {$t_2$};
+    \node [transition] (t3) [below of=p2] {$t_3$};
+
+\path (p1) node [label=center:$n$] {};
+\path (p2) node [tokens=1] {};
+
+      \draw (t1) edge [post] (p1);
+      \draw (t3) edge [pre] (p2);
+
+     \draw (t2) edge [pre]                (p1);
+ %    \draw (t2) edge [post, reset]              (p3);
+%\draw[-*] (t2)   --  (p3) ;
+%\draw[-open diamond] (t2)   --  (p3) ;
+\draw[-diamond] (p1)   --  (t3) ;
+\node (figa) [below right of=t2,node distance=1.0cm] {\bf $\kpat$};
+%---------------------------------------------------------------------------
+%
+%    \node [transition] (t10) [right of=p2,node distance=2.8cm] {$t_1$};
+%    \node [transition] (teps) [right of=t10] {$\varepsilon$};
+%    \node [place] (p10)  [below of=t10,label=left:$p_1$] {};
+%    \node [place] (notp10) [right of =p10,label=below:$\overline{p_1}$]{$k$};
+%    \node [transition] (t30) [right of=notp10] {$t_3$};
+%%     \node [place] (p2) [right of =t1,label=right:$P_2$]{};
+%    \node [place] (p20) [above of =t30,label=right:$p_2$]{};
+%    \node [transition] (t20) [below of=p10] {$t_2$};
+%
+%%\path (p1) node [tokens=1] {};
+%\path (p20) node [tokens=1] {};
+%
+%      \draw (teps) edge [pre] (p10);
+%      \draw (teps) edge [post] (notp10);
+%      \draw (teps) edge [pre,bend right] (p20);
+%      \draw (teps) edge [post,bend left] (p20);
+%      \draw (t10) edge [pre] (notp10);
+%      \draw (t10) edge [post] (p10);
+%      \draw (t30) edge [pre] (p20);
+%      \draw (t30) edge [post,bend left] node[]{$k$}  (notp10);
+%      \draw (t30) edge [pre,bend right] node[label=above:$k$]{}  (notp10);
+%
+%     \draw (t20) edge [pre]    (p10);
+%     \draw (t20) edge [post]  (notp10);
+%     \node (figb) [below right of=t20,node distance=1.0cm] {$N_2 : t_1 \prec t_3$};
+%
+
+%   \node [transition] (t10) [ right of=p2,node distance=2.8cm] {$t_1$};
+%
+%%   \node [transition] (t10) [right of=p2,node distance=2.8cm] {$t_1$};
+%    \node [place] (p10)  [below of=t10,label=left:$p_1$] {};
+%    \node [place] (notp10) [right of =p10,node distance=.8cm, label=above:$\overline{p_1}$]{};
+%    \node [place] (p20) [right of =t10,node distance=2.6cm,label=right:$p_2$]{};
+%
+%    \path (notp10) node [tokens=1] {};
+%    \path (p20) node [tokens=1] {};
+%    \node [transition] (t20) [below of=p10] {$t_2$};
+%
+%%    \node [transition] (t300) [below of=p200] {$t_3$};
+%
+%    \node [transition] (t31) [ right of=notp10,node distance=1.6cm] {$t_3$};
+% %   \node (dot) [right of=t301,node distance=0.45cm,label=above:$_{\dots}$]{};
+%    \node [transition] (t32) [below right of=t31,node distance=0.8cm] {$t_3$};
+%%     \node [place] (p2) [right of =t1,label=right:$P_2$]{};
+%
+%%\draw[dashed] (t300) -- (t301);
+%
+%      \draw (t10) edge [pre] (notp10);
+%      \draw (t10) edge [post] (p10);
+% %     \draw (t300) edge [pre] (p200);
+%  %    \draw (t300) edge [post,bend right=20] node[label=above:{\footnotesize$k$}]{}  (notp100);
+% %     \draw (t300) edge [pre,bend left=0] node[label=above:{\footnotesize$k$}]{}  (notp100);
+%  %    \draw (t300) edge [post] (p300);
+%
+%      \draw (t31) edge [pre] (p20);
+%      \draw (t31) edge [post,bend right=20]  (notp10);
+%      \draw (t31) edge [pre,bend left=10]   (notp10);
+%      \draw (t32) edge [pre,bend left=40]  (p10);
+%
+%      \draw (t32) edge [pre,bend right=20] (p20);
+%      \draw (t32) edge [post,bend left=30]   (notp10);
+%%      \draw (t302) edge [pre,bend left=0] node[label=above:{\footnotesize $k-n$}]{}  (notp100);
+%%      \draw (t32) edge [pre,bend left=10]  (p10);
+%
+%
+%     \draw (t20) edge [pre]    (p10);
+%     \draw (t20) edge [post]  (notp10);
+%\node (figb) [below of=notp10,node distance=2.0cm]  {\bf $~~~~~~~~~~~~~~~\transpat$};
+
+
+%---------------------------------------------------------------------------
+%
+
+
+   \node [transition] (t100) [ right of=p2,node distance=2cm] {$t_1$};
+
+%   \node [transition] (t10) [right of=p2,node distance=2.8cm] {$t_1$};
+    \node [place] (p100)  [below of=t100,label=left:$p_1$] {$n$};
+    \node [place] (notp100) [right of =p100,node distance=1.0cm, label=above:$\overline{p_1}$]{{\footnotesize $k$-$n$}};
+    \node [transition] (t200) [below of=p100] {$t_2$};
+
+    \node [place] (p200) [right of =t100,node distance=3.8cm,label=right:$p_2$]{};
+
+    \node [transition] (t320) [ right of=notp100,node distance=2.4cm,label=right:$(t_3)$] {$\overline{{t_3}_{n}}$};
+
+    \node [transition] (t310) [ left of=p200,node distance=1.5cm,label=above:$(t_3)$] {$\overline{{t_3}_k}$};
+    \node [transition] (t330) [ right of=t200,node distance=4.5cm,label=right:$(t_3)$] {$t_3$};
+
+        \node (dot) [below right of=t310,node distance=0.7cm ]{${\ddots}$};
+        \node (dot2) [below right  of=t320,node distance=0.8cm ]{${\ddots}$};
+
+  %  \path (notp100) node [tokens=1] {};
+    \path (p200) node [tokens=1] {};
+
+      \draw (t100) edge [pre] (notp100);
+      \draw (t100) edge [post] (p100);
+
+      \draw (t310) edge [pre] (p200);
+      \draw (t310) edge [post,bend right=20]  node[label=above:{\scriptsize $k$}]{}  (notp100);
+      \draw (t310) edge [pre,bend left=10] node[label=above :{\scriptsize $k$}]{}  (notp100);
+
+      \draw (t320) edge [pre,bend left=38] node[label=left:{\scriptsize $n$}]{}  (p100);
+      \draw (t320) edge [pre,bend right=5]  (p200);
+      \draw (t320) edge [pre,bend left=10]  node[label=above:{\scriptsize $k-n$}]{}   (notp100);
+     \draw (t320) edge [post,bend left=-20]  node[label=above:{\scriptsize $k$}]{}   (notp100);
+
+       \draw (t330) edge [pre,bend left=40] node[label=above:{\scriptsize $k$}]{}  (p100);
+     \draw (t330) edge [pre,bend right=20]  (p200);
+%      \draw (t330) edge [pre,bend left=30]  node[label=above:{\scriptsize $k-n$}]{}   (notp100);
+     \draw (t330) edge [post]  node[label=right:{\scriptsize $k$}]{}   (notp100);
+
+     \draw (t200) edge [pre]    (p100);
+     \draw (t200) edge [post]  (notp100);
+\node (figc) [below of=notp100,node distance=2.0cm] {\bf $~~~~~~~~~~~~~~~\transkpat$};
+
+
+\end{tikzpicture}
+}
+\end{center}
+\caption{Translating reset arcs for bounded nets}
+\label{fig:causalityNK}
+\end{figure}

@@ -1,0 +1,192 @@
+\begin{tikzpicture}[node distance=1.1cm,bend angle=-45,auto,->,>=stealth',shorten >=1pt,auto, semithick]
+%\tikzstyle{reset}=[-*]
+\node (p0){};
+    \node [transition] (t1) [right of=p0] {$t_1$};
+%     \node [place] (p2) [right of =t1,label=right:$P_2$]{};
+      \node [place] (p2) [right of =t1,label=right:$p_2$]{};
+     \node [place] (p1)  [below of=t1,label=left:$p_1$] {};
+    \node [transition] (t2) [below of=p1] {$t_2$};
+    \node [transition] (t3) [below of=p2] {$t_3$};
+
+%\path (p1) node [tokens=1] {};
+\path (p2) node [tokens=1] {};
+
+      \draw (t1) edge [post] (p1);
+      \draw (t3) edge [pre] (p2);
+
+     \draw (t2) edge [pre]                (p1);
+ %    \draw (t2) edge [post, reset]              (p3);
+%\draw[-*] (t2)   --  (p3) ;
+%\draw[-open diamond] (t2)   --  (p3) ;
+\draw[-diamond] (p1)   --  (t3) ; 
+%\node (figa) [below right of=t2,node distance=1.0cm] {$N_1$ (RPN)  : $t_1 \wr t_3$};
+\node (figa) [below right of=t2,node distance=1.3cm] {\bf $\pat$};
+
+
+
+\begin{scope}[xshift=4cm]
+%---------------------------------------------------------------------------
+%
+%    \node [transition] (t10) [right of=p2,node distance=2.8cm] {$t_1$};
+%    \node [transition] (teps) [right of=t10] {$\varepsilon$};
+%    \node [place] (p10)  [below of=t10,label=left:$p_1$] {};
+%    \node [place] (notp10) [right of =p10,label=below:$\overline{p_1}$]{$k$};
+%    \node [transition] (t30) [right of=notp10] {$t_3$};
+%%     \node [place] (p2) [right of =t1,label=right:$P_2$]{};
+%    \node [place] (p20) [above of =t30,label=right:$p_2$]{};
+%    \node [transition] (t20) [below of=p10] {$t_2$};
+%
+%%\path (p1) node [tokens=1] {};
+%\path (p20) node [tokens=1] {};
+%
+%      \draw (teps) edge [pre] (p10);
+%      \draw (teps) edge [post] (notp10);
+%      \draw (teps) edge [pre,bend right] (p20);
+%      \draw (teps) edge [post,bend left] (p20);
+%      \draw (t10) edge [pre] (notp10);
+%      \draw (t10) edge [post] (p10);
+%      \draw (t30) edge [pre] (p20);
+%      \draw (t30) edge [post,bend left] node[]{$k$}  (notp10);
+%      \draw (t30) edge [pre,bend right] node[label=above:$k$]{}  (notp10);
+%
+%     \draw (t20) edge [pre]    (p10);
+%     \draw (t20) edge [post]  (notp10);
+%     \node (figb) [below right of=t20,node distance=1.0cm] {$N_2 : t_1 \prec t_3$};
+%
+
+   \node [transition] (t10)  {$t_1$};
+
+%   \node [transition] (t10) [right of=p2,node distance=2.8cm] {$t_1$};
+    \node [place] (p10)  [below of=t10,label=left:$p_1$] {};
+    \node [place] (notp10) [right of =p10,node distance=.8cm, label=above:$\overline{p_1}$]{};
+    \node [place] (p20) [right of =t10,node distance=2.9cm,label=right:$p_2$]{};
+    
+    \path (notp10) node [tokens=1] {};
+    \path (p20) node [tokens=1] {};
+    \node [transition] (t20) [below of=p10] {$t_2$};
+    
+%    \node [transition] (t300) [below of=p200] {$t_3$};
+
+    \node [transition] (t31) [ right of=notp10,node distance=1.3cm,label=right:$(t_3)$] {$\overline{t_3}$};
+ %   \node (dot) [right of=t301,node distance=0.45cm,label=above:$_{\dots}$]{};
+    \node [transition] (t32) [below right of=t31,label=below:$(t_3)$,node distance=1.4cm] {$t_3$};
+%     \node [place] (p2) [right of =t1,label=right:$P_2$]{};
+
+%\draw[dashed] (t300) -- (t301);
+
+      \draw (t10) edge [pre] (notp10);
+      \draw (t10) edge [post] (p10);
+ %     \draw (t300) edge [pre] (p200);
+  %    \draw (t300) edge [post,bend right=20] node[label=above:{\footnotesize$k$}]{}  (notp100);
+ %     \draw (t300) edge [pre,bend left=0] node[label=above:{\footnotesize$k$}]{}  (notp100);
+  %    \draw (t300) edge [post] (p300);
+
+      \draw (t31) edge [pre] (p20);
+      \draw (t31) edge [post,bend right=20]  (notp10);
+      \draw (t31) edge [pre,bend left=10]   (notp10);
+      \draw (t32) edge [pre,bend left=40]  (p10);
+
+      \draw (t32) edge [pre,bend right=20] (p20);
+      \draw (t32) edge [post,bend left=30]   (notp10);
+%      \draw (t302) edge [pre,bend left=0] node[label=above:{\footnotesize $k-n$}]{}  (notp100);
+%      \draw (t32) edge [pre,bend left=10]  (p10);
+
+
+     \draw (t20) edge [pre]    (p10);
+     \draw (t20) edge [post]  (notp10);
+%\node (figb) [below of=notp10,node distance=2.0cm] {$N_2$ (safe PN) : $t_1 \prec t_3$ };
+\node (figb) [below of=notp10,node distance=2.0cm] {\bf $~~~~~~~~~~~~~~~\transpat$};
+\end{scope}
+
+\begin{scope}[xshift=9cm]
+%---------------------------------------------------------------------------
+%
+
+     %\tikzstyle{reset}=[-*]
+%\node [place] (p0) [label=left:$P_0$] {$n$};
+     \node [place] (p0) [label=left:$p_0$,color=gray]{};
+    \node [transition] (t1) [right of=p0] {$t_1$};
+     \node [place] (p1)  [below of=t1,label=left:$p_1$] {};
+    \node [transition] (t3) [right of=p1] {$t_3$};
+      \node [place] (p2) [right of =t1,label=right:$p_2$]{};
+    \node [transition] (t2) [below of=p1] {$t_2$};
+    \node [place] (p3)  [left of=t2,label=left:$p_3$,color=gray] {};
+%     \node [place] (p3) [below of=t3,label=right:$p_3$]{};
+%    \node [transition] (t0) [above of=t3] {$t_0$};
+
+%\path (p1) node [tokens=1] {};
+%\path (p2) node [tokens=1] {};
+
+%      \draw[-diamond] (t0)   --  (p0) ;
+%      \draw[-diamond] (t0)   --  (p1) ;
+%      \draw[-diamond] (t0)   --  (p2) ;
+%      \draw (t0) edge [post,bend left] node [label=right:$n$]{}  (p0);
+%     \draw (t0) edge [post,bend right] node {$m$}  (p2);
+%      \draw (t0) edge [post,bend left] (p0);
+%      \draw (t0) edge [post,bend right] (p2);
+
+\path (p2) node [tokens=1] {};
+\path (p0) node [tokens=1] {};
+\path (p3) node [tokens=1] {};
+
+      \draw (t1) edge [post,bend right] (p1);
+       \draw[-diamond] (p1)   --  (t1) ;
+
+%       \draw[-diamond] (t3)   --  (p2) ;
+      \draw (t3) edge [pre,bend right] (p2);
+      \draw (t3) edge [post,bend left] (p2);
+%      \draw (t3) edge [post] (p3);
+
+     \draw (t2) edge [pre]                (p1);
+ %    \draw (t2) edge [post, reset]              (p3);
+%\draw[-*] (t2)   --  (p3) ;
+%\draw[-open diamond] (t2)   --  (p3) ;
+\draw[-diamond] (p1)   --  (t3) ; 
+
+
+      \draw (t1) edge [pre,bend right,color=gray] (p0);
+      \draw (t1) edge [post,bend left,color=gray] (p0);
+      
+            \draw (t2) edge [pre,bend right,color=gray] (p3);
+      \draw (t2) edge [post,bend left,color=gray] (p3);
+\node (figa) [below  of=t2,node distance=1.0cm] {\bf $\pn{}_{0_R}$};
+\end{scope}   
+%---------------------------------------------------------------------------
+
+\begin{scope}[xshift=14.5cm]
+\node [place,tokens=1] (b1) [label=left:$b_1(p_0)$]{};
+\node [place,tokens=1] (b2) [right of =b1,node distance=2.4cm,label=right:$b_2(p_2)$]{};
+
+ \node [transition] (e1) [below of=b1,label=left:$(t_1)$] {$e_1$};
+ \node [transition] (e2) [below of=b2,label=right:$(t_3)$] {$e_2$};
+ 
+ %\node [red place] (b4) [below left of =e1,node distance=1.4cm,label=left:$b_4(p_0)$]{};
+  \node [place] (b4) [below left of =e1,node distance=1.4cm,label=left:$b_4(p_0)$]{};
+ \node [place] (b5) [below right of =e1,node distance=1.4cm,label=left:$b_5(p_1)$]{};
+ %\node [red place] (b6) [below  of =e2,label=right:$b_6(p_2)$]{};
+  \node [place] (b6) [below  of =e2,label=right:$b_6(p_2)$]{};
+ 
+  \node [transition] (e3) [below of=b5,label=right:$(t_2)$] {$e_3$};
+\node [place,tokens=1] (b3) [left of =e3,label=left:$b_3(p_3)$]{};
+%\node [red place] (b7) [below  of =e3,label=right:$b_7(p_3)$]{};
+\node [place] (b7) [below  of =e3,label=right:$b_7(p_3)$]{};
+  
+  \draw (e1) edge [pre] (b1);
+  \draw (e1) edge [post,] (b5);
+  %\draw[red] (e1) edge [-to,dashed] (b4);
+  \draw (e1) edge [post] (b4);
+  \draw(b5) edge [-diamond,bend left] (e1);
+  
+  \draw (e2) edge [pre] (b2);
+  %\draw[red] (e2) edge [-to,dashed] (b6);
+  \draw (e2) edge [post] (b6);
+  \draw[-diamond] (b5)   --  (e2) ;
+  
+    \draw (e3) edge [pre] (b5); 
+    \draw (e3) edge [pre] (b3);
+    %\draw[red] (e3) edge [-to,dashed] (b7);
+    \draw (e3) edge [post] (b7);
+\node (figd) [left of=b7,node distance=1.5cm] {\bf $\mathcal{F}_{0_R}$};
+\end{scope}
+
+\end{tikzpicture}

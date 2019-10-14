@@ -1,0 +1,148 @@
+\begin{tikzpicture}[node distance=1cm,bend angle=-45,->,>=stealth',shorten >=1pt,auto, semithick]
+\node (p0){};
+\node [place,tokens=1] (p1) [right of=p0,label=left:$p_1$] {};
+\node [transition] (t1) [below of=p1] {$t_1$};
+\node [place] (p3) [below of=t1,label=left:$p_3$]{};
+\node [transition] (t3) [below of=p3] {$t_3$};
+\node [place] (p4) [below of=t3,label=left:$p_4$]{};
+\node [transition] (t4) [below of=p4] {$t_4$};
+
+\node [place,tokens=1] (p2) [right of=p1,node distance=2cm,label=right:$p_2$] {};
+\node [transition] (t2) [below of=p2] {$t_2$};
+\node [place] (p5) [below of=t2,label=right:$p_5$]{};
+\node [transition] (t5) [below of=p5] {$t_5$};
+\node [place] (p6) [below of=t5,label=right:$p_6$]{};
+
+\node (figa) [below right of=t4] {$\rpn{}$};
+
+\draw (t1) edge [pre] (p1);
+\draw (t1) edge [post] (p3);
+\draw (t3) edge [pre] (p3);
+\draw (t3) edge [post] (p4);
+\draw (t4) edge [pre] (p4);
+\draw (t4) edge [post,bend left] (p3);
+
+\draw (t2) edge [pre] (p2);
+\draw (t2) edge [post] (p5);
+\draw (t5) edge [pre] (p5);
+\draw (t5) edge [pre] (p3);
+\draw (t5) edge [post] (p6);
+
+\draw(p3) edge [-diamond] (t2);
+\draw(p5) edge [-diamond] (t1);
+
+%---------
+\node [place,tokens=1] (p1) [right of=p2,node distance=3.1cm,label=left:$b1(p_1)$] {};
+\node [transition] (t1) [below of=p1,label=left:$(t_1)$] {$e_1$};
+\node [place] (p3) [below of=t1,label=left:$b_3(p_3)$]{};
+\node [transition] (t3) [below of=p3,label=left:$(t_3)$] {$e_3$};
+\node [place] (p4) [below of=t3,label=left:$b5(p_4)$]{};
+%\node [transition] (t4) [below of=p4,label=left:$(t_4)$] {$e_4$};
+%\node [red transition] (t4) [below of=p4,dashed] [label=left:{\color{red}$(t_4)$}]{$e_4$};
+\node (t4) [below of=p4] {};
+%\node [place] (p7) [below of=t4,label=left:$b7(p_3)$]{};
+
+\node [place,tokens=1] (p2) [right of=p1,node distance=2cm,label=right:$b_2(p_2)$] {};
+\node [transition] (t2) [below of=p2,label=right:$(t_2)$] {$e_2$};
+\node [place] (p5) [below of=t2,label=right:$b_4(p_5)$]{};
+\node [transition] (t5) [below of=p5,label=right:$(t_5)$] {$e_5$};
+\node [place] (p6) [below of=t5,label=right:$b_6(p_6)$]{};
+
+\node (figb) [below right of=t4] {$\fin{}$};
+
+\draw (t1) edge [pre] (p1);
+\draw (t1) edge [post] (p3);
+\draw (t3) edge [pre] (p3);
+\draw (t3) edge [post] (p4);
+%\draw[red] (p4) edge [-to,dashed] (t4);
+%\draw (t4) edge [pre] (p4);
+%\draw (t4) edge [post] (p7);
+
+\draw (t2) edge [pre] (p2);
+\draw (t2) edge [post] (p5);
+\draw (t5) edge [pre] (p5);
+\draw (t5) edge [pre] (p3);
+\draw (t5) edge [post] (p6);
+
+%\draw(p3) edge [-diamond] (t2);
+%\draw(p5) edge [-diamond] (t1);
+
+
+%---------
+%---------
+\node [place,tokens=1] (p1) [right of=p2,node distance=4cm,label=left:$b1(p_1)$] {};
+\node [transition] (t1) [below of=p1,label=left:$(t_1)$] {$e_1$};
+\node [place] (p3) [below of=t1,label=left:$b_3(p_3)$]{};
+\node [transition] (t3) [below of=p3,label=left:$(t_3)$] {$e_3$};
+\node [place] (p4) [below of=t3,label=left:$b5(p_4)$]{};
+%\node [transition] (t4) [below of=p4,label=left:$(t_4)$] {$e_4$};
+%\node [red transition] (t4) [below of=p4,dashed] [label=left:{\color{red}$(t_4)$}]{$e_4$};
+\node (t4) [below of=p4] {};
+%\node [place] (p7) [below of=t4,label=left:$b7(p_3)$]{};
+
+\node [place,tokens=1] (p2) [right of=p1,node distance=2cm,label=right:$b_2(p_2)$] {};
+\node [transition] (t2) [below of=p2,label=right:$(t_2)$] {$e_2$};
+\node [place] (p5) [below of=t2,label=right:$b_4(p_5)$]{};
+\node [transition] (t5) [below of=p5,label=right:$(t_5)$] {$e_5$};
+\node [place] (p6) [below of=t5,label=right:$b_6(p_6)$]{};
+
+\node (figb) [below right of=t4] {$\fin{}'$};
+
+\draw (t1) edge [pre] (p1);
+\draw (t1) edge [post] (p3);
+\draw (t3) edge [pre] (p3);
+\draw (t3) edge [post] (p4);
+%\draw[red] (p4) edge [-to,dashed] (t4);
+%\draw (t4) edge [pre] (p4);
+%\draw (t4) edge [post] (p7);
+
+\draw (t2) edge [pre] (p2);
+\draw (t2) edge [post] (p5);
+\draw (t5) edge [pre] (p5);
+\draw (t5) edge [pre] (p3);
+\draw (t5) edge [post] (p6);
+
+\draw(p3) edge [-diamond] (t2);
+\draw(p5) edge [-diamond] (t1);
+
+
+%---------
+
+
+%% \node [place,tokens=1] (p1) [right of=p2,node distance=5cm,label=left:$b1(p_1)$] {};
+%% \node [transition] (t1) [below of=p1,label=left:$(t_1)$] {$e_1$};
+%% \node [place] (p3) [below of=t1,label=left:$b_3(p_3)$]{};
+%% \node [transition] (t3) [below of=p3,label=left:$(t_3)$] {$e_3$};
+%% \node [place] (p4) [below of=t3,label=left:$b5(p_4)$]{};
+%% \node [transition] (t4) [below of=p4,label=left:$(t_4)$] {$e_4$};
+%% \node [place] (p7) [below of=t4,label=left:$b7(p_3)$]{};
+%% \node [red transition] (t6) [below of=p7,dashed] [label=left:{\color{red}$(t_3)$}]{$e_6$};
+
+%% \node [place,tokens=1] (p2) [right of=p1,node distance=2cm,label=right:$b_2(p_2)$] {};
+%% \node [transition] (t2) [below of=p2,label=right:$(t_2)$] {$e_2$};
+%% \node [place] (p5) [below of=t2,label=right:$b_4(p_5)$]{};
+%% \node [transition] (t5) [below of=p5,label=right:$(t_5)$] {$e_5$};
+%% \node [place] (p6) [below of=t5,label=right:$b_6(p_6)$]{};
+
+%% \node (figc) [below right of=t6] {c. $Fin_R$ of $N_4$};
+
+%% \draw (t1) edge [pre] (p1);
+%% \draw (t1) edge [post] (p3);
+%% \draw (t3) edge [pre] (p3);
+%% \draw (t3) edge [post] (p4);
+%% \draw (t4) edge [pre] (p4);
+%% \draw (t4) edge [post] (p7);
+
+%% \draw (t2) edge [pre] (p2);
+%% \draw (t2) edge [post] (p5);
+%% \draw (t5) edge [pre] (p5);
+%% \draw (t5) edge [pre] (p7);
+%% \draw (t5) edge [post] (p6);
+
+%% \draw(p3) edge [-diamond] (t2);
+%% \draw(p5) edge [-diamond] (t1);
+
+%% \draw[red] (p7) edge [-to,dashed] (t6);
+
+
+\end{tikzpicture}

@@ -1,0 +1,74 @@
+\begin{tikzpicture}[node distance=1.1cm,bend angle=-45,auto,->,>=stealth',shorten >=1pt,auto, semithick]
+%\tikzstyle{reset}=[-*]
+\node (p0){};
+\begin{scope}[xshift=0cm]
+\node [place,tokens=2] (p1) [label=left:$p_1$]{};
+\node [transition] (t1) [below of=p1,label=left:$t_1$] {};
+ \node [place] (p2) [below left of =t1,node distance=1.4cm,label=below:$p_2$]{};
+ \node [place] (p3) [below right of =t1,node distance=1.4cm,label=below:$p_3$]{};
+  
+  \draw (t1) edge [pre] (p1);
+  \draw (t1) edge [post] (p2);
+  \draw (t1) edge [post] (p3);
+  \node (info) [below of=p1,node distance=3.3cm] {Petri net $\pn{}$};
+\end{scope}
+%-------------------------------------------------------------------------------------
+\begin{scope}[xshift=3.8cm]
+\node [place,tokens=1] (p11) [label=left:$b_1$]{};
+\node [transition] (t11) [below of=p11,label=left:$e_1$] {};
+ \node [place] (p21) [below left of =t11,node distance=1.4cm,label=below:$b_3$]{};
+ \node [place] (p31) [below right of =t11,node distance=1.4cm,label=below:$b_4$]{};
+  
+  \draw (t11) edge [pre] (p11);
+  \draw (t11) edge [post] (p21);
+  \draw (t11) edge [post] (p31);
+  \node (tp) [below right of=p31] {};
+    \node (info) [below of=tp,node distance=0.5cm] {One branching process of  $\pn{}$};
+
+ \node (tmp) [below right of=p31] {};
+    \node (homomorphism) [below of=tmp,node distance=1.4cm] {%
+      \begin{tabular}{r|cccccccc}
+        & $b_1$ & $b_2$ & $b_3$ & $b_4$ & $b_5$ & $b_6$ & $e_1$ & $e_2$ \\
+        \hline
+        h & $p_1$ & $p_1$ & $p_2$ & $p_3$ & $p_2$ & $p_3$ & $t_1$ & $t_1$ \\
+      \end{tabular}%
+    };
+    
+\end{scope}
+
+\begin{scope}[xshift=6.8cm]
+\node [place,tokens=1] (p12) [label=left:$b_2$]{};
+\node [transition] (t12) [below of=p12,label=left:$e_2$] {};
+ \node [place] (p22) [below left of =t12,node distance=1.4cm,label=below:$b_5$]{};
+ \node [place] (p32) [below right of =t12,node distance=1.4cm,label=below:$b_6$]{};
+  
+  \draw (t12) edge [pre] (p12);
+  \draw (t12) edge [post] (p22);
+  \draw (t12) edge [post] (p32);
+
+\end{scope}
+
+%-------------------------------------------------------------------------------------
+\begin{scope}[xshift=10.8cm]
+\node [place,tokens=1] (p11) [label=left:$b_1$]{};
+\node [transition] (t11) [below of=p11,label=left:$e_1$] {};
+ \node [place] (p21) [below left of =t11,node distance=1.4cm,label=below:$b_3$]{};
+  
+  \draw (t11) edge [pre] (p11);
+  \draw (t11) edge [post] (p21);
+\end{scope}
+
+\begin{scope}[xshift=12.5cm]
+\node [place,tokens=1] (p12) [label=left:$b_2$]{};
+\node [transition] (t12) [below of=p12,label=left:$e_2$] {};
+ \node [place] (p22) [below left of =t12,node distance=1.4cm,label=below:$b_5$]{};
+  
+  \draw (t12) edge [pre] (p12);
+  \draw (t12) edge [post] (p22);
+  
+   \node (tp) [below left of=p22] {};
+    \node (info) [below of=tp,node distance=0.5cm] {One process of  $\pn{}$};
+
+\end{scope}
+
+\end{tikzpicture}
